@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Lunch Order</title>
+  <link href="https://cdn.jsdelivr.net/npm/lucide@0.9.0/dist/lucide.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/lucide-react/dist/lucide-react.min.css" rel="stylesheet">
+  <style>
+    /* Add custom styles here if needed */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Lunch Order Card */
+.lunch-order-card {
+  background-color: #f9fafb; /* Tailwind's bg-gray-50 */
+  padding: 1.5rem; /* Tailwind's p-6 */
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  margin-bottom: 1.5rem; /* Tailwind's mb-6 */
+}
+
+.lunch-order-title {
+  font-size: 1.25rem; /* Tailwind's text-xl */
+  font-weight: 600; /* Tailwind's font-semibold */
+  margin-bottom: 1rem; /* Tailwind's mb-4 */
+  text-align: center;
+}
+
+.verify-order-button {
+  width: 100%;
+  background-color: #1f2937; /* Tailwind's bg-gray-900 */
+  color: white;
+  padding: 0.5rem 1rem; /* Tailwind's py-2 px-4 */
+  border-radius: 0.375rem; /* Tailwind's rounded-md */
+  transition: background-color 0.3s ease;
+}
+
+.verify-order-button:hover {
+  background-color: #374151; /* Tailwind's hover:bg-gray-800 */
+}
+  </style>
+</head>
+<body>
+  
+  <header class="bg-gray-900 text-white py-6 sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-bold flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 h-6 w-6">
+            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+            <path d="M10 6h4"></path>
+            <path d="M10 10h4"></path>
+            <path d="M10 14h4"></path>
+            <path d="M10 18h4"></path>
+          </svg>
+          Hostel & Lunch System
+        </h1>
+        <nav>
+          <ul class="flex space-x-6">
+            <li>
+              <a href="/" class="flex items-center gap-2 hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 h-5 w-5">
+                  <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                  <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                  <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                  <path d="M10 6h4"></path>
+                  <path d="M10 10h4"></path>
+                  <path d="M10 14h4"></path>
+                  <path d="M10 18h4"></path>
+                </svg>
+                Hostels
+              </a>
+            </li>
+            <li>
+              <a href="#lunch" class="flex items-center gap-2 hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-utensils-crossed h-5 w-5">
+                  <path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"></path>
+                  <path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"></path>
+                  <path d="m2.1 21.8 6.4-6.3"></path>
+                  <path d="m19 5-7 7"></path>
+                </svg>
+                Lunch Orders
+              </a>
+            </li>
+            <li>
+              <a href="#about" class="flex items-center gap-2 hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-5 w-5">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                About Us
+              </a>
+              
+            </li>
+            <li>
+              <a href="#contact" class="flex items-center gap-2 hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-5 w-5">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Contact
+              </a>
+            </li>
+            <li>
+              <a href="/adminlogin" class="flex items-center gap-2 hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list h-5 w-5">
+                  <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <path d="M12 11h4"></path>
+                  <path d="M12 16h4"></path>
+                  <path d="M8 11h.01"></path>
+                  <path d="M8 16h.01"></path>
+                </svg>
+                Admin Portal
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  
+  <div class="container mx-auto px-4 py-8">
+    <!-- Available Hostels Section -->
+    <section>
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <i class="lucide lucide-building-2 h-6 w-6"></i> Available Hostels
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Hostel Cards -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition hover:scale-105" onclick="window.location.href='HostelDetails.html'">
+          <img src="https://raghumahostels.com/public/images/rooms/1716641681.jpeg" alt="Sunset Hostel" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2">Raghuma Hostel</h3>
+            <p class="flex items-center gap-1 text-gray-600 mb-2">
+              <i class="lucide lucide-map-pin h-4 w-4"></i> Knowledeg park-2
+            </p>
+            <p class="flex items-center gap-1 text-gray-800 font-bold">
+              <i class="lucide lucide-dollar-sign h-4 w-4"></i> 
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition hover:scale-105" onclick="window.location.href='HostelDetails2.html'">
+            <img src="https://content.jdmagicbox.com/v2/comp/delhi/t9/011pxx11.xx11.170901173254.w2t9/catalogue/royal-paradise-hostel-greater-noida-noida-2h2dy6jmuk.jpg" alt="Sunset Hostel" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">Royal paradise </h3>
+              <p class="flex items-center gap-1 text-gray-600 mb-2">
+                <i class="lucide lucide-map-pin h-4 w-4"></i> Knowledeg park-2
+              </p>
+              <p class="flex items-center gap-1 text-gray-800 font-bold">
+                <i class="lucide lucide-dollar-sign h-4 w-4"></i> 
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition hover:scale-105" onclick="window.location.href='HostelDetails3.html'">
+            <img src="https://images.jdmagicbox.com/v2/comp/delhi/w5/011pxx11.xx11.170907133519.p6w5/catalogue/hmr-hostel-knowledge-park-3-greater-noida-noida-hostel-for-boy-students-m4trdvrubi.jpg" alt="Sunset Hostel" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">HMR Hostel</h3>
+              <p class="flex items-center gap-1 text-gray-600 mb-2">
+                <i class="lucide lucide-map-pin h-4 w-4"></i> Knowledeg park-2
+              </p>
+              <p class="flex items-center gap-1 text-gray-800 font-bold">
+                <i class="lucide lucide-dollar-sign h-4 w-4"></i> 
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition hover:scale-105" onclick="window.location.href='HostelDetails4.html'">
+            <img src="https://content.jdmagicbox.com/comp/noida/q3/011pxx11.xx11.121105175537.k5q3/catalogue/a-b-hostel-greater-noida-noida-paying-guest-accommodation-for-men-27h1p.jpg" alt="Sunset Hostel" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">AB Hostel</h3>
+              <p class="flex items-center gap-1 text-gray-600 mb-2">
+                <i class="lucide lucide-map-pin h-4 w-4"></i> Knowledeg park-2
+              </p>
+              <p class="flex items-center gap-1 text-gray-800 font-bold">
+                <i class="lucide lucide-dollar-sign h-4 w-4"></i>
+              </p>
+            </div>
+          </div>
+
+        <!-- Repeat similar cards for other hostels as needed -->
+
+      </div>
+    </section>
+
+    <!-- Lunch Order Section -->
+    <section id="lunch" class="mt-12">
+      <h2 class="text-2xl font-bold mb-6">Lunch Order System</h2>
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <form id="orderForm" class="space-y-4">
+          <div>
+            <label for="studentId" class="block text-sm font-medium text-gray-700 mb-1">Student ID</label>
+            <input
+              type="text"
+              id="studentId"
+              class="w-full p-2 border border-gray-300 rounded-md"
+              placeholder="Enter your student ID"
+              required
+            />
+          </div>
+    
+          <div>
+            <label for="hostel" class="block text-sm font-medium text-gray-700 mb-1">Select Hostel</label>
+            <select id="hostel" class="w-full p-2 border border-gray-300 rounded-md">
+              <option value="Raghuma Hostel">Raghuma Hostel</option>
+    <option value="Royal Paradise">Royal Paradise</option>
+    <option value="HMR Hostel">HMR Hostel</option>
+    <option value="AB Hostel">AB Hostel</option>
+            </select>
+          </div>
+    
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Order Type</label>
+            <div class="flex gap-4">
+              <label class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="orderType"
+                  value="daily"
+                  checked
+                  class="text-gray-900"
+                />
+                Daily Order
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="orderType"
+                  value="weekly"
+                  class="text-gray-900"
+                />
+                Weekly Order
+              </label>
+            </div>
+          </div>
+    
+          <div id="dailyOrderOptions">
+            <label for="day" class="block text-sm font-medium text-gray-700 mb-1">Select Day</label>
+            <select id="day" class="w-full p-2 border border-gray-300 rounded-md">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+            </select>
+          </div>
+    
+          <div id="weeklyOrderOptions" class="hidden">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Select Days</label>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="day" value="monday" class="text-gray-900"> Monday
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="day" value="tuesday" class="text-gray-900"> Tuesday
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="day" value="wednesday" class="text-gray-900"> Wednesday
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="day" value="thursday" class="text-gray-900"> Thursday
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="day" value="friday" class="text-gray-900"> Friday
+              </label>
+            </div>
+          </div>
+    
+          <button type="submit" class="w-full bg-gray-900 text-white py-2 px-4 rounded-md hover:bg-gray-800 transition">
+            Order Lunch
+          </button>
+        </form>
+    
+        <div id="orderMessage" class="mt-4 p-4 bg-gray-50 rounded-md hidden">
+          <p class="text-lg font-semibold text-gray-900"></p>
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      // JavaScript to handle dynamic visibility of daily and weekly options
+      const orderForm = document.getElementById('orderForm');
+      const dailyOrderOptions = document.getElementById('dailyOrderOptions');
+      const weeklyOrderOptions = document.getElementById('weeklyOrderOptions');
+      const orderMessage = document.getElementById('orderMessage');
+      
+      // Listen for changes to the order type
+      orderForm.addEventListener('change', (event) => {
+        const orderType = document.querySelector('input[name="orderType"]:checked').value;
+        if (orderType === 'daily') {
+          dailyOrderOptions.classList.remove('hidden');
+          weeklyOrderOptions.classList.add('hidden');
+        } else {
+          dailyOrderOptions.classList.add('hidden');
+          weeklyOrderOptions.classList.remove('hidden');
+        }
+      });
+    
+      // Handle form submission
+      orderForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+    
+        const studentId = document.getElementById('studentId').value;
+        const hostel = document.getElementById('hostel').value;
+        const orderType = document.querySelector('input[name="orderType"]:checked').value;
+        let days = [];
+    
+        // Gather days based on order type
+        if (orderType === 'daily') {
+          days = [document.getElementById('day').value];
+        } else {
+          const checkboxes = document.querySelectorAll('input[name="day"]:checked');
+          checkboxes.forEach((checkbox) => {
+            days.push(checkbox.value);
+          });
+        }
+    
+        const orderData = { studentId, hostel, orderType, days };
+    
+        // Send the data to the backend API
+        fetch('/api/order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderData),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          orderMessage.classList.remove('hidden');
+          orderMessage.querySelector('p').textContent = data.message;
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          orderMessage.classList.remove('hidden');
+          orderMessage.querySelector('p').textContent = 'There was an error placing your order. Please try again.';
+        });
+      });
+    </script>
+    <div class="lunch-order-card" onclick="window.location.href='verifi.html'">
+        <h3 class="lunch-order-title">Verify Today's Lunch Order</h3>
+        <button class="verify-order-button">Verify Order</button>
+      </div>
+  </div>
+
+
+  
+
+
+  <section id="about" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-8 w-8">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        About Us
+      </h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Team" class="rounded-lg shadow-lg">
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-4">Your Trusted Hostel & Lunch Service</h3>
+          <p class="text-gray-600 mb-6">Since 2025, we've been providing quality accommodation and delicious meals to students across the campus. Our mission is to create a comfortable living environment while ensuring nutritious and tasty meals for our residents.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award h-5 w-5 text-gray-700">
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+              </svg>
+              <span>Quality Service</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield h-5 w-5 text-gray-700">
+                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+              </svg>
+              <span>Safe & Secure</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee h-5 w-5 text-gray-700">
+                <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+                <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+                <line x1="6" x2="6" y1="2" y2="4"></line>
+                <line x1="10" x2="10" y1="2" y2="4"></line>
+                <line x1="14" x2="14" y1="2" y2="4"></line>
+              </svg>
+              <span>Fresh Meals</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-5 w-5 text-gray-700">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>24/7 Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield h-6 w-6 text-gray-700">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Secure Environment</h3>
+          <p class="text-gray-600">24/7 security monitoring and controlled access to ensure your safety and peace of mind.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee h-6 w-6 text-gray-700">
+              <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+              <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+              <line x1="6" x2="6" y1="2" y2="4"></line>
+              <line x1="10" x2="10" y1="2" y2="4"></line>
+              <line x1="14" x2="14" y1="2" y2="4"></line>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Quality Meals</h3>
+          <p class="text-gray-600">Nutritious and delicious meals prepared by professional chefs using fresh ingredients.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-6 w-6 text-gray-700">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Flexible Ordering</h3>
+          <p class="text-gray-600">Easy-to-use ordering system with daily and weekly meal plans to suit your schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Phone -->
+        <div class="text-center">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-6 w-6 text-gray-700">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Phone</h3>
+          <p class="text-gray-600">+91 705*******</p>
+        </div>
+  
+        <!-- Email -->
+        <div class="text-center">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail h-6 w-6 text-gray-700">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Email</h3>
+          <p class="text-gray-600">support@hostelandlunch.com</p>
+        </div>
+  
+        <!-- Location -->
+        <div class="text-center">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin h-6 w-6 text-gray-700">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Location</h3>
+          <p class="text-gray-600">Sharda Universit,  Greater Noida, Uttar Pradesh
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-gray-300" href="/">Home</a></li>
+            <li><a href="#about" class="hover:text-gray-300">About Us</a></li>
+            <li><a href="#lunch" class="hover:text-gray-300">Order Lunch</a></li>
+            <li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Contact Info</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-4 w-4">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              +91 70********
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail h-4 w-4">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              support@hostelandlunch.com
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin h-4 w-4">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Sharda Universit,  Greater Noida, Uttar Pradesh
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Working Hours -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Working Hours</h3>
+          <ul class="space-y-2">
+            <li>Monday - Friday: 7:00 AM - 8:00 PM</li>
+            <li>Saturday: 8:00 AM - 6:00 PM</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Footer Bottom -->
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+        <p>© 2025 Hostel &amp; Lunch System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  
+  
+  
+
+  
+</body>
+</html>
+

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Details</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/lucide-react/dist/lucide-react.min.css" rel="stylesheet"> -->
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* General Styling */
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+} */
+
+/* Header Styles */
+.header {
+  background-color: rgba(17, 24, 39, 1);
+
+  color: white;
+  /* padding: 1.5rem 0; */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 97%;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-building2,
+.icon-building,
+.icon-utensils-crossed,
+.icon-user-cog {
+  width: 24px;
+  height: 24px;
+  stroke: #ffffff;
+}
+
+.nav {
+  font-size: 1rem;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style-type: none;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #e5e7eb; /* Tailwind's hover:text-gray-300 */
+}
+
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+/* Responsiveness (optional) */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* .container {
+    width: 97%;
+    margin: 50px auto;
+} */
+
+.hostel-detail {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    position: relative;
+    height: 300px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
+.hostel-name {
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hostel-location {
+    color: #fff;
+    font-size: 18px;
+}
+
+.hostel-info {
+    padding: 20px;
+}
+
+.hostel-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.hostel-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* .facilities { */
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* gap: 10px; */
+/* } */
+.facility{
+  display: flex;
+  gap: 10px;
+}
+.facilities {
+   display: grid;  /*      Layout items in row */
+  gap: 10px;         /* Space between items */
+  flex-wrap: wrap;     /* Make it responsive */
+}
+
+.item-center {
+  display: flex;        /* Align Icon + Text */
+  align-items: center;  /* Vertical Center */
+  gap: 0.5rem;         /* Space between icon and text */
+}
+
+svg {
+  width: 20px;         /* Icon size */
+  height: 20px;
+  stroke: #333;        /* Icon color */
+}
+
+
+
+.items-center {
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+
+
+
+
+
+.feedback {
+    padding: 20px;
+}
+
+.feedback h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#feedback-form div {
+    margin-bottom: 15px;
+}
+
+#feedback-form input,
+#feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#feedback-form button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#feedback-form button:hover {
+    background-color: #444;
+}
+#existing-feedback {
+    margin-top: 20px;
+    /* padding: 20px;
+    background-color: #f9f9f9; */
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+#existing-feedback h4 {
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+#existing-feedback div {
+
+    background-color: rgba(249, 250, 251, 1);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#existing-feedback p {
+    color: #777;
+}
+
+    </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-building2">
+            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+            <path d="M10 6h4"></path>
+            <path d="M10 10h4"></path>
+            <path d="M10 14h4"></path>
+            <path d="M10 18h4"></path>
+          </svg>
+          Hostel & Lunch System
+        </h1>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li><a href="/" class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-building">
+                <path d="M3 21V9l9-7 9 7v12H3z"></path>
+                <path d="M9 21V12h6v9"></path>
+              </svg>
+              Hostels</a></li>
+            <!-- <li><a href="#lunch" class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-utensils-crossed">
+                <path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"></path>
+                <path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"></path>
+                <path d="m2.1 21.8 6.4-6.3"></path>
+                <path d="m19 5-7 7"></path>
+              </svg>
+              Lunch Orders</a></li> -->
+            <li><a href="/adminlogin" class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-user-cog">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M18 14h.01"></path>
+                <path d="M6 14h.01"></path>
+                <path d="M12 22c-3.3 0-6-2.7-6-6v-1"></path>
+                <path d="M18 16v-1c0-1.1-.9-2-2-2h-1"></path>
+              </svg>
+              Admin Portal</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+</header>
+
+
+    <div class="container">
+        <div class="hostel-detail">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hostel Image" />
+                <div class="image-overlay">
+                    <h1 class="hostel-name">AB Hostel</h1>
+                    <p class="hostel-location">Knowledeg park-2</p>
+                </div>
+            </div>
+
+            <div class="hostel-info">
+                <h2>About this hostel</h2>
+                <p class="hostel-description">A comfortable and affordable hostel with great amenities for travelers.</p>
+
+                <div class="facilities">
+  
+                    <div class="facility">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h.01"></path>
+                        <path d="M2 8.82a15 15 0 0 1 20 0"></path>
+                        <path d="M5 12.859a10 10 0 0 1 14 0"></path>
+                        <path d="M8.5 16.429a5 5 0 0 1 7 0"></path>
+                      </svg>
+                      Wi-Fi
+                    </div>
+                  
+                    <div class="facility">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 10h11"></path>
+                        <path d="M21 12a9 9 0 0 0-9-9"></path>
+                        <path d="M8 2v2"></path>
+                        <path d="M3 3l2 2"></path>
+                        <path d="M14 2v2"></path>
+                        <path d="M19 3l-2 2"></path>
+                        <path d="M10 15v2a2 2 0 1 0 4 0v-2"></path>
+                      </svg>
+                      Air Conditioning
+                    </div>
+                  
+                    <div class="facility">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="5" r="3"></circle>
+                        <path d="M12 22v-7"></path>
+                        <path d="M9 12H4v4h5"></path>
+                        <path d="M15 12h5v4h-5"></path>
+                      </svg>
+                      Gym
+                    </div>
+                  
+                    <div class="facility">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3h18"></path>
+                        <path d="M3 9h18"></path>
+                        <path d="M9 3v12"></path>
+                        <path d="M9 21h6"></path>
+                        <path d="M15 3v12"></path>
+                      </svg>
+                      Kitchen
+                    </div>
+                  
+                  </div>
+                  
+                  
+            </div>
+
+            <div class="feedback">
+                <h3>Leave Your Feedback</h3>
+                <form id="feedback-form">
+                    <div>
+                        <label for="name">Your Name (optional)</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" />
+                    </div>
+                    <div>
+                        <label for="feedback">Your Feedback</label>
+                        <textarea id="feedback" name="feedback" placeholder="Write your feedback here..." required></textarea>
+                    </div>
+                    <button type="submit">Submit Feedback</button>
+                </form>
+
+                <div id="existing-feedback" class="existing-feedback">
+                    <h4>What Others Are Saying</h4>
+                    <!-- Feedback will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        // Handle form submission and send data to the back-end
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value || 'Anonymous'; // Default to 'Anonymous' if no name is provided
+      const feedbackText = document.getElementById('feedback').value;
+    
+      // Send feedback to the server using fetch API
+      fetch('http://localhost:3000/submit-feedback4', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: name, feedback: feedbackText })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('Thank you for your feedback!');
+          document.getElementById('feedback').value = ''; // Clear the feedback textarea
+          document.getElementById('name').value = ''; // Clear the name input field
+           // Dynamically add the new feedback to the feedback section
+           const feedbackContainer = document.getElementById('existing-feedback');
+          const newFeedbackHTML = `<div><strong>${name}</strong><p>${feedbackText}</p></div>`;
+          feedbackContainer.innerHTML += newFeedbackHTML;  // Append new feedback
+          
+        } else {
+          alert('There was an error submitting your feedback. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error submitting feedback:', error);
+      });
+    });
+    
+    
+        // Function to load existing feedback from the server
+    function loadFeedback() {
+      fetch('http://localhost:3000/get-feedback4')
+        .then(response => response.json())
+        .then(data => {
+          const feedbackContainer = document.getElementById('existing-feedback');
+          feedbackContainer.innerHTML = '<h4>What Others Are Saying</h4>';
+          if (data.feedbacks4) {
+            data.feedbacks4.forEach(feedback => {
+              const name = feedback.name || 'Anonymous'; // If no name, display 'Anonymous'
+              feedbackContainer.innerHTML += `<div><strong>${name}</strong><p>${feedback.feedback}</p></div>`;
+            });
+          } else {
+            feedbackContainer.innerHTML += '<p>No feedback yet. Be the first to leave one!</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Error loading feedback:', error);
+        });
+    }
+    
+    // Load existing feedback on page load
+    window.onload = loadFeedback;
+    
+      </script>
+</body>
+</html>
+
+
+

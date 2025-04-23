@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Name 1 - Details</title>
+  <style>
+    /* Basic styles for the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin: 20px auto;
+      /* max-width: 900px; */
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* .container:hover {
+      transform: scale(1.02);
+    } */
+
+    .hostel-info {
+      position: relative;
+      margin-bottom: 30px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: url('https://static.vecteezy.com/system/resources/previews/019/523/927/non_2x/abstract-digital-fingerprint-login-concept-identity-verification-illustration-with-digital-hand-wireframe-security-protection-on-a-futuristic-modern-background-vector.jpg') no-repeat center center/cover;
+      /* height: 400px; */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .hostel-info h2, .hostel-info p {
+      color: white;
+      /* text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); */
+      /* background: rgba(0, 0, 0, 0.5); */
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 70%;
+      font-size: 14px;
+    }
+    .verification-section {
+      margin-top: 40px;
+      background-color: #e6f7ff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border: 1px solid #a3d5ff;
+      text-align: center;
+    }
+
+    .verification-section h3 {
+      margin-bottom: 20px;
+    }
+
+    .verification-section button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .verification-section button:hover {
+      background-color: #555;
+    }
+
+
+
+
+
+    .feedback-section {
+      margin-top: 40px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border: 1px solid #ccc;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* .feedback-section:hover {
+      transform: scale(1.02);
+    } */
+
+    .feedback-section h3 {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .feedback-form label {
+      display: block;
+      margin-bottom: 10px;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .feedback-form textarea, .feedback-form input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    .feedback-form textarea:focus, .feedback-form input:focus {
+      border-color: #333;
+      outline: none;
+    }
+
+    .feedback-form button {
+      padding: 12px 25px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .feedback-form button:hover {
+      background-color: #555;
+    }
+
+    .existing-feedback {
+      margin-top: 30px;
+      border-top: 2px solid #ddd;
+      padding-top: 20px;
+    }
+
+    .existing-feedback p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hostel Name 1 - Details</h1>
+  </header>
+
+  <div class="container">
+    <!-- Hostel Information -->
+    <div class="hostel-info">
+      <!-- <img src="https://static.vecteezy.com/system/resources/previews/019/523/927/non_2x/abstract-digital-fingerprint-login-concept-identity-verification-illustration-with-digital-hand-wireframe-security-protection-on-a-futuristic-modern-background-vector.jpg" alt="Hostel 1 Image"> -->
+      <h2>Hostel Name 1</h2>
+      <p>Location: City A</p>
+      <p>Price: $100 per food</p>
+      <p>Facilities: Free Wi-Fi, Air Conditioning, Gym, Kitchen</p>
+      <p>Description: A comfortable and affordable hostel with great amenities for travelers.</p>
+    </div>
+
+     <!-- Verification Section -->
+     <div class="verification-section">
+      <h3>Verify Today's Lunch Order</h3>
+      <button onclick="window.location.href='verification-form.html'">Verify Order</button>
+    </div>
+  </div>
+
+  <!-- <script>
+    function openVerificationForm() {
+      window.open('verification-form.html', '_blank', 'width=600,height=400');
+    }
+    </script> -->
+   <!-- Feedback Section -->
+<div class="feedback-section">
+    <h3>Leave Your Feedback</h3>
+    <form class="feedback-form" id="feedback-form">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your name (optional)" />
+  
+      <label for="feedback">Your Feedback:</label>
+      <textarea id="feedback" name="feedback" placeholder="Write your feedback here..." required></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
+  
+    <!-- Display Existing Feedback -->
+    <div class="existing-feedback" id="existing-feedback">
+      <h4>What Others Are Saying</h4>
+      <!-- Existing feedback will be populated here -->
+    </div>
+  </div>
+  
+  </div>
+
+  <script>
+    // Handle form submission and send data to the back-end
+    document.getElementById('feedback-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('name').value || 'Anonymous'; // Default to 'Anonymous' if no name is provided
+  const feedbackText = document.getElementById('feedback').value;
+
+  // Send feedback to the server using fetch API
+  fetch('http://localhost:3000/submit-feedback', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: name, feedback: feedbackText })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('Thank you for your feedback!');
+      document.getElementById('feedback').value = ''; // Clear the feedback textarea
+      document.getElementById('name').value = ''; // Clear the name input field
+    }
+  })
+  .catch(error => {
+    console.error('Error submitting feedback:', error);
+  });
+});
+
+
+    // Function to load existing feedback from the server
+    // Function to load existing feedback from the server
+function loadFeedback() {
+  fetch('http://localhost:3000/get-feedback')
+    .then(response => response.json())
+    .then(data => {
+      const feedbackContainer = document.getElementById('existing-feedback');
+      feedbackContainer.innerHTML = '<h4>What Others Are Saying</h4>';
+      if (data.feedbacks.length > 0) {
+        data.feedbacks.forEach(feedback => {
+          const name = feedback.name || 'Anonymous'; // If no name, display 'Anonymous'
+          feedbackContainer.innerHTML += `<p><strong>${name}:</strong> "${feedback.feedback}"</p>`;
+        });
+      } else {
+        feedbackContainer.innerHTML += '<p>No feedback yet. Be the first to leave one!</p>';
+      }
+    })
+    .catch(error => {
+      console.error('Error loading feedback:', error);
+    });
+}
+
+// Load existing feedback on page load
+window.onload = loadFeedback;
+
+  </script>
+</body>
+</html>
